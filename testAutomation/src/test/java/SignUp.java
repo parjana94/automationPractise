@@ -11,6 +11,8 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SignUp {
+    public String mail = "testing21548@gmail.com";
+    public String pass = "beka";
     @BeforeTest
     public void SetUp(){
         open("https://www.automationexercise.com/");
@@ -31,11 +33,11 @@ public class SignUp {
         signUpBtn.click();
         Assert.assertEquals(signUpBlock.$(byTagName("h2")).getText(), "New User Signup!", "Verify 'New User Signup!' is visible");
         name.setValue("Beka");
-        signUpBlock.$(byName("email")).setValue("testing21548@gmail.com");
+        signUpBlock.$(byName("email")).setValue(mail);
         regBtn.click();
         Assert.assertTrue(accInfo.is(visible), "Verify that 'ENTER ACCOUNT INFORMATION' is visible");
         gender.click();
-        $("#password").setValue("beka");
+        $("#password").setValue(pass);
         $("#days").selectOption("6");
         $("#months").selectOption("July");
         $("#years").selectOption("1994");
