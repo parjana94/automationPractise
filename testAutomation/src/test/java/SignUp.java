@@ -17,7 +17,7 @@ public class SignUp {
     public void SetUp(){
         open("https://www.automationexercise.com/");
     }
-    @Test
+    @Test (priority = 1)
     public void SignUpTest(){
         SelenideElement signUpBtn = $(".fa-lock");
         SelenideElement signUpBlock= $(".signup-form");
@@ -26,9 +26,6 @@ public class SignUp {
         SelenideElement accInfo = $(byTagName("h2")).$(byText("Enter Account Information"));
         SelenideElement gender = $("#uniform-id_gender1");
         SelenideElement accDel =$(byTagAndText("b", "Account Deleted!"));
-
-
-
 
         signUpBtn.click();
         Assert.assertEquals(signUpBlock.$(byTagName("h2")).getText(), "New User Signup!", "Verify 'New User Signup!' is visible");
@@ -58,7 +55,5 @@ public class SignUp {
         $(byLinkText("Delete Account")).click();
         Assert.assertEquals(accDel.getText(), "ACCOUNT DELETED!", "Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button");
 
-
-        sleep(10000);
     }
 }

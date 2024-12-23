@@ -10,33 +10,20 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-
-public class LogIn {
+public class LogOut {
     @BeforeTest
-    public void setUp(){
+    public void setUp (){
         open("https://www.automationexercise.com/");
     }
-    @Test (priority = 2)
-    public void validTest(){
+    @Test (priority = 4)
+    public void logOutTest(){
         SelenideElement loginBlock = $(".login-form");
-        SelenideElement accDel =$(byTagAndText("b", "Account Deleted!"));
-
         $(byLinkText("Signup / Login")).click();
         Assert.assertTrue($(byTagAndText("h2","Login to your account")).is(visible), "Verify 'Login to your account' is visible");
         loginBlock.$(byName("email")).setValue("test199406@gmail.com");
         loginBlock.$(byName("password")).setValue("beka");
         $(byTagAndText("button","Login")).click();
         $(byLinkText("Logout")).click();
-    }
-    @Test (priority = 3)
-    public void invalidTest(){
-        SelenideElement loginBlock = $(".login-form");
-        $(byLinkText("Signup / Login")).click();
         Assert.assertTrue($(byTagAndText("h2","Login to your account")).is(visible), "Verify 'Login to your account' is visible");
-        loginBlock.$(byName("email")).setValue("b.parjana@gmail.com");
-        loginBlock.$(byName("password")).setValue("beka");
-        $(byTagAndText("button","Login")).click();
-        $(byTagAndText("p","Your email or password is incorrect!"));
-
     }
 }

@@ -1,9 +1,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Suite1" verbose="1">
-    <test name="Nopackage">
+<suite name="Suite1" verbose="1" parallel="tests" thread-count="3">
+    <test name="Nopackage"  parallel="tests">
         <classes>
             <class name="SignUp"/>
+        </classes>
+    </test>
+    <test name="Nopackage2" parallel="tests">
+        <classes>
+            <class name="LogIn"/>
+        </classes>
+    </test>
+    <test name="Nopackage3" parallel="tests">
+        <classes>
+            <class name="LogOut"/>
         </classes>
     </test>
 
